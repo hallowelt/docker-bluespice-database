@@ -6,7 +6,7 @@
 echo "Granting required permissions ..."
 
 mariadb -u root -p"${MARIADB_ROOT_PASSWORD}" <<EOF
-GRANT ALL PRIVILEGES ON \`wiki_%\`.* TO '${MARIADB_USER}'@'%';
+GRANT ALL PRIVILEGES ON \`sfr_%\`.* TO '${MARIADB_USER}'@'%';
 FLUSH PRIVILEGES;
 EOF
 
