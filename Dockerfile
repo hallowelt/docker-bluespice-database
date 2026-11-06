@@ -5,5 +5,6 @@ RUN echo "# Disable binlogs" >> /defaults/custom.cnf
 RUN echo "[mysqld]" >> /defaults/custom.cnf
 RUN echo "skip-log-bin" >> /defaults/custom.cnf
 
-# Build timestamp (UTC, YmdHis)
-RUN mkdir -p /image && date -u +%Y%m%d%H%M%S > /image/BUILDINFO
+# Build info: value of build arg BUILDINFO, falls back to the UTC build timestamp (YmdHis)
+ARG BUILDINFO
+RUN mkdir -p /image && echo "${BUILDINFO:-$(date -u +%Y%m%d%H%M%S)}" > /image/BUILDINFO
